@@ -1,8 +1,8 @@
 {
   "name": "dokku-vue",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Evandro Zilli Pavei <evzpav@gmail.com>",
+  "description": "Vue.js project deploying to Dokku",
+  "author": "evzpav",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
