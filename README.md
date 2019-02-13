@@ -26,18 +26,9 @@ cat ~/.ssh/id_rsa.pub | ssh -i ~/.ssh/mypemfile.pem ubuntu@$PUBLIC_IP "sudo sshc
 ```
 
 - In Vue project folder
-``` bash
-# Add server.js file
-# // server.js
-# var express = require('express');
-# var path = require('path');
-# var serveStatic = require('serve-static');
-# app = express();
-# app.use(serveStatic(__dirname + "/dist"));
-# var port = process.env.PORT || 5000;
-# app.listen(port);
-# console.log('server started '+ port);
 
+```bash
+#Add server.js file (https://github.com/evzpav/dokku-example-vue/blob/master/server.js) to src folder
 
 # Install server.js dependencies
 npm install express path serve-static --save
@@ -45,7 +36,7 @@ npm install express path serve-static --save
 #Install all dependencies
 npm install
 
-# Add  "start": "node server.js" to scripts on package.json
+# Add script called "start": "node server.js" to scripts on package.json
 
 # Run build
 npm run build
@@ -64,3 +55,44 @@ git add .
 git commit -m "deploy to dokku"
 git push dokku master
 ```
+
+## Deployment script - see file [up.sh](https://github.com/evzpav/dokku-example-vue/blob/master/up.sh)
+```bash
+#remove all files from dist folder
+  rm -rf dist/* 
+
+#run build - created build files on dist folder
+  npm run build 
+  
+#stage dist folder 
+  git add -A dist 
+
+#commit 
+  git commit -m "up to dokku" 
+
+#push to dokku origin
+  git push dokku master 
+  
+``` 
+
+## Change default deployment branch to 'prod' (optional)
+ ```bash
+  #locally
+    #create branch prod locally - do once only
+      git branch prod
+    #go to branch prod
+      git checkout prod
+    #merge master branch in prod
+      git merge master
+   
+    #This pushes local prod branch to origin master branch(dokku)
+     git push dokku prod:master
+ 
+  #on dokku VM:
+   dokku git:set $MYPROJECT deploy-branch prod
+   
+   
+ ``` 
+
+## Add https - SSL cert
+Use this https://github.com/dokku/dokku-letsencrypt
