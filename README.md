@@ -82,3 +82,6 @@ git remote add dokku dokku@$PUBLIC_IP:$MYPROJECT
 
 ## Add https - SSL cert
 Use this https://github.com/dokku/dokku-letsencrypt
+
+## Run nginx locally on Docker
+./local_deploy.sh
