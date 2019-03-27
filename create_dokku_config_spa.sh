@@ -9,7 +9,8 @@ echo -e "\nBUILDPACK_URL=https://github.com/dokku/buildpack-nginx\n" >> .env
 # create deploy script
 echo "
     #!/bin/bash
-    git add .
+    rm -rf dist/*
+    git add -A dist
     git commit -m \"up to dokku\"
     git push dokku master " > up_dokku.sh
 

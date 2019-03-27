@@ -14,7 +14,7 @@ MYPROJECT="dokku-vue"
 dokku apps:create $MYPROJECT
 dokku config:set $MYPROJECT NGINX_ROOT="dist" TZ="America/Sao_Paulo" 
 
-#This var NGINX_ROOT="dist" is very important so Dokku knows where to
+#This var NGINX_ROOT="dist" is very important so Dokku knows where to serve files
 ``` 
 
 ## Locally:
@@ -36,22 +36,13 @@ npm install
 # Run build
 npm run build
 
-# Test server locally
-npm run start
-# Go to localhost:5000
-
 # Remove /dist from .gitignore
 
 # Add dokku remote to project:
 git remote add dokku dokku@$PUBLIC_IP:$MYPROJECT
-
-# Commit changes and push to dokku remote repo
-git add .
-git commit -m "deploy to dokku"
-git push dokku master
 ```
 
-## Deployment script - see file [up.sh](https://github.com/evzpav/dokku-example-vue/blob/master/up.sh)
+## Deployment script - see file [up_dokku.sh](https://github.com/evzpav/dokku-example-vue/blob/master/up_dokku.sh)
 ```bash
 #remove all files from dist folder
   rm -rf dist/* 
