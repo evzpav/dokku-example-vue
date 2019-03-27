@@ -14,6 +14,7 @@ MYPROJECT="dokku-vue"
 dokku apps:create $MYPROJECT
 dokku config:set $MYPROJECT NGINX_ROOT="dist" TZ="America/Sao_Paulo" 
 
+#This var NGINX_ROOT="dist" is very important so Dokku knows where to
 ``` 
 
 ## Locally:

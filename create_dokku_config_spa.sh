@@ -14,3 +14,6 @@ echo "
     git push dokku master " > up_dokku.sh
 
 chmod 700 up_dokku.sh
+
+#Remember to run on server
+#dokku config:set $MYPROJECT NGINX_ROOT="dist" 
