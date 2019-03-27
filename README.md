@@ -12,7 +12,7 @@ http://dokku.viewdocs.io/dokku/
 # Create dokku project
 MYPROJECT="dokku-vue" 
 dokku apps:create $MYPROJECT
-dokku config:set $MYPROJECT TZ="America/Sao_Paulo" 
+dokku config:set $MYPROJECT NGINX_ROOT="dist" TZ="America/Sao_Paulo" 
 
 ``` 
 
@@ -28,15 +28,9 @@ cat ~/.ssh/id_rsa.pub | ssh -i ~/.ssh/mypemfile.pem ubuntu@$PUBLIC_IP "sudo sshc
 - In Vue project folder
 
 ```bash
-#Add server.js file (https://github.com/evzpav/dokku-example-vue/blob/master/server.js) to src folder
-
-# Install server.js dependencies
-npm install express path serve-static --save
 
 #Install all dependencies
 npm install
-
-# Add script called "start": "node server.js" to scripts on package.json
 
 # Run build
 npm run build
